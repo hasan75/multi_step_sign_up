@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useFormDataContext } from '../../hooks/useFormDataContext';
 
+import progressStyles from './StepAnimation.module.css';
+
 const StepAnimation = () => {
   const { step, setStep } = useFormDataContext();
 
   const steps = [
-    { name: 'Account', icon: 'lock-open' },
+    { name: 'Account', icon: 'lock_open' },
     { name: 'Personal', icon: 'person' },
     { name: 'Image', icon: 'photo_camera' },
     { name: 'Finish', icon: 'done' },
@@ -55,11 +57,14 @@ const StepAnimation = () => {
     return newSteps;
   };
 
+  const [percentage, setPercentage] = useState(25);
+
   useEffect(() => {
     const stepsState = steps.map((stepp, index) =>
       Object.assign(
         {},
         {
+          icon: stepp.icon,
           description: stepp.name,
           completed: false,
           highlighted: index === 0 ? true : false,
@@ -71,7 +76,9 @@ const StepAnimation = () => {
     stepsRef.current = stepsState;
     const current = updateStep(step - 1, stepsRef.current);
     setNewStep(current);
-  }, [steps, step]);
+
+    setPercentage((step / 4) * 100);
+  }, [step]);
 
   const stepsDisplay = newStep.map((step, index) => {
     return (
@@ -79,7 +86,7 @@ const StepAnimation = () => {
         key={index}
         className={
           index !== newStep.length - 1
-            ? 'w-full flex items-center'
+            ? 'w-full flex items-center '
             : 'flex items-center'
         }
       >
@@ -88,15 +95,15 @@ const StepAnimation = () => {
             className={`rounded-full transition duration-500 ease-in-out border-2 border-gray-300 h-12 w-12 flex items-center justify-center py-3  ${
               step.selected
                 ? 'bg-green-600 text-white font-bold border border-green-600 '
-                : ''
+                : 'bg-gray-200'
             }`}
           >
             {step.completed ? (
-              <span className='text-white font-bold text-xl material-icons-sharp'>
+              <span className='text-white material-icons-sharp'>
                 {step?.icon}
               </span>
             ) : (
-              <span className='text-white font-bold text-xl material-icons-sharp'>
+              <span className='text-white  material-icons-sharp'>
                 {step?.icon}
               </span>
             )}
@@ -118,10 +125,21 @@ const StepAnimation = () => {
     );
   });
 
+  console.log(percentage);
+
   return (
-    <div className='mx-4 p-4 flex justify-between items-center'>
-      {stepsDisplay}
-    </div>
+    <>
+      <div className='mx-4 p-4 flex justify-between items-center'>
+        {stepsDisplay}
+      </div>
+
+      <div class='w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700 my-14'>
+        <div
+          class={`${progressStyles.bgCustom}  h-4 rounded-full`}
+          style={{ width: `${percentage}%` }}
+        ></div>
+      </div>
+    </>
   );
 };
 
