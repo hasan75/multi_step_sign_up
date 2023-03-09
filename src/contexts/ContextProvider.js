@@ -4,7 +4,6 @@ export const FormContext = createContext();
 
 const ContextProvider = ({ children }) => {
   const [formData, setFormData] = useState({});
-  console.log('from Context Provider', formData);
 
   const [step, setStep] = useState(1);
 
