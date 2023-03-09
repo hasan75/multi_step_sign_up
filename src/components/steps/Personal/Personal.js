@@ -38,48 +38,60 @@ const Personal = ({ step, setStep }) => {
       <div className='row'>
         {/* for taking first name input  */}
         <div className='col form-group'>
-          <label htmlFor='FirstName' className='fw-bold mb-2'>
+          <label
+            htmlFor='FirstName'
+            className='block text-gray-700 text-sm font-bold mb-2'
+          >
             First Name: *
           </label>
           <input
             type='text'
-            className='form-control'
+            className='form-control form-control shadow appearance-none border border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
             name='FirstName'
             {...register('FirstName', { required: 'First Name is required' })}
           />
         </div>
         {/* for last name input  */}
         <div className='col form-group mt-4'>
-          <label htmlFor='Last Name' className='mb-2 fw-bold'>
+          <label
+            htmlFor='Last Name'
+            className='block text-gray-700 text-sm font-bold mb-2'
+          >
             Last Name
           </label>
           <input
             type='text'
-            className='form-control'
+            className='form-control form-control shadow appearance-none border border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
             name='LastName'
             {...register('LastName', { required: 'Last Name is required' })}
           />
         </div>
         {/* for contact  */}
         <div className='col form-group mt-4'>
-          <label htmlFor='Contact' className='mb-2 fw-bold'>
+          <label
+            htmlFor='Contact'
+            className='block text-gray-700 text-sm font-bold mb-2'
+          >
             Contact No. : *
           </label>
           <input
             type='text'
-            className='form-control'
+            className='form-control form-control shadow appearance-none border border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
             name='Contact'
             {...register('Contact', { required: 'Contact is required' })}
           />
         </div>
         {/* for alternative contact  */}
         <div className='col form-group mt-4'>
-          <label htmlFor='alternativeNum' className='mb-2 fw-bold'>
+          <label
+            htmlFor='alternativeNum'
+            className='block text-gray-700 text-sm font-bold mb-2'
+          >
             Alternative Contact No : *
           </label>
           <input
             type='text'
-            className='form-control'
+            className='form-control form-control shadow appearance-none border border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
             name='alternativeNum'
             {...register('alternativeNum', {
               required: 'Alternative Number is required',

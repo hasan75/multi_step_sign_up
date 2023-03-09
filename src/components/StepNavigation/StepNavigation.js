@@ -21,10 +21,10 @@ const StepNavigation = ({ step, setStep, error, response }) => {
   };
 
   return (
-    <div className=''>
+    <div className='mt-6'>
       {/* for showing the validation errors  */}
       {error ? (
-        <h5 className='d-flex align-items-center justify-content-center text-danger py-3'>
+        <h5 className='flex align-center justify-center text-red-500 py-3'>
           <span className='material-icons-sharp me-2'>error</span>{' '}
           <span>{error}</span>
         </h5>
@@ -35,25 +35,27 @@ const StepNavigation = ({ step, setStep, error, response }) => {
       {/* back and next navigator buttons  */}
 
       <div
-        className={`${response?.status === 'success' ? 'd-none' : ' '} ${
+        className={`${response?.status === 'success' ? 'hidden' : ' '} ${
           step === 1
-            ? 'd-flex justify-content-end'
-            : 'd-flex justify-content-between'
+            ? 'flex flex-col justify-center align-center'
+            : 'flex flex-col justify-center align-center'
         }`}
       >
+        {step < 4 && (
+          <button
+            type='submit'
+            className='mb-6 block w-full bg-gray-100 hover:bg-green-500 text-gray-700 font-semibold hover:text-white py-3 px-4  hover:border-transparent rounded'
+          >
+            {step === 3 ? 'Submit' : 'Next'}
+          </button>
+        )}
         {step > 1 && (
           <button
             type='button'
             onClick={() => previousStepFrom(step, setStep)}
-            className='btn btn-outline-success px-5'
+            className='block w-full bg-gray-100 hover:bg-gray-700 text-gray-700 font-semibold hover:text-white py-3 px-4  hover:border-transparent rounded'
           >
-            Back
-          </button>
-        )}
-
-        {step < 4 && (
-          <button type='submit' className='btn btn-outline-success px-5'>
-            {step === 3 ? 'Submit' : 'Next'}
+            Previous
           </button>
         )}
       </div>
