@@ -1,14 +1,14 @@
+
+
 .bgCustom{
     background: linear-gradient(45deg,rgba(255,255,255,0.5) 25%, transparent 25%, transparent 50%,rgba(255,255,255,0.5) 50%,rgba(255,255,255,0.5) 75%, transparent 75%, transparent);
     animation: move 0.5s linear infinite;
     background-color: #2eb82e;
+    background-size: 30px;
 }
 
 @keyframes move
 {
-    0%{
-        background-position: 0 0;
-    }
     100%{
         background-position: 40px 0px;
     }

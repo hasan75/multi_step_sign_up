@@ -133,7 +133,9 @@ const StepAnimation = () => {
         {stepsDisplay}
       </div>
 
-      <div class='w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700 my-14'>
+      <div
+        class={`${progressStyles.progress} w-full bg-gray-200 rounded-full h-4 dark:bg-gray-700 my-14`}
+      >
         <div
           class={`${progressStyles.bgCustom}  h-4 rounded-full`}
           style={{ width: `${percentage}%` }}
