@@ -29,75 +29,72 @@ const Account = ({ step, setStep }) => {
     saveStepToLocal((step = step + 1));
   };
   return (
-    <div>
-      <form
-        className='d-flex flex-column justify-content-between w-100'
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div className='row d-flex justify-content-center mt-5'>
-          {/* for taking first name input  */}
-          <div className='col form-group'>
-            <label htmlFor='FirstName' className='fw-bold mb-2'>
-              First Name: *
-            </label>
-            <input
-              type='text'
-              className='form-control'
-              name='FirstName'
-              {...register('FirstName', { required: 'First Name is required' })}
-            />
-          </div>
-          {/* for last name input  */}
-          <div className='col form-group mt-4'>
-            <label htmlFor='Last Name' className='mb-2 fw-bold'>
-              Last Name
-            </label>
-            <input
-              type='text'
-              className='form-control'
-              name='LastName'
-              {...register('LastName', { required: 'Last Name is required' })}
-            />
-          </div>
-          {/* for contact  */}
-          <div className='col form-group mt-4'>
-            <label htmlFor='Contact' className='mb-2 fw-bold'>
-              Contact No. : *
-            </label>
-            <input
-              type='text'
-              className='form-control'
-              name='Contact'
-              {...register('Contact', { required: 'Contact is required' })}
-            />
-          </div>
-          {/* for alternative contact  */}
-          <div className='col form-group mt-4'>
-            <label htmlFor='alternativeNum' className='mb-2 fw-bold'>
-              Alternative Contact No : *
-            </label>
-            <input
-              type='text'
-              className='form-control'
-              name='alternativeNum'
-              {...register('alternativeNum', {
-                required: 'Alternative Number is required',
-              })}
-            />
-          </div>
+    <form
+      className='d-flex flex-column justify-content-between w-100'
+      onSubmit={handleSubmit(onSubmit)}
+    >
+      <div className='row d-flex justify-content-center mt-5'>
+        {/* for taking first name input  */}
+        <div className='col form-group'>
+          <label htmlFor='email' className='fw-bold mb-2'>
+            Email: *
+          </label>
+          <input
+            type='email'
+            className='form-control'
+            name='email'
+            {...register('email', { required: 'email is required' })}
+          />
         </div>
-        <div className='row d-flex justify-content-center'>
-          <div className='col-8'>
-            <StepNavigation
-              step={step}
-              setStep={setStep}
-              error={errors.Name ? 'Name field is required' : false}
-            ></StepNavigation>
-          </div>
+        {/* for last name input  */}
+        <div className='col form-group mt-4'>
+          <label htmlFor='UserName' className='mb-2 fw-bold'>
+            User Name: *
+          </label>
+          <input
+            type='text'
+            className='form-control'
+            name='UserName'
+            {...register('UserName', { required: 'User Name is required' })}
+          />
         </div>
-      </form>
-      <StepNavigation step={step} setStep={setStep}></StepNavigation>
-    </div>
+        {/* for contact  */}
+        <div className='col form-group mt-4'>
+          <label htmlFor='Password' className='mb-2 fw-bold'>
+            Password : *
+          </label>
+          <input
+            type='password'
+            className='form-control'
+            name='Password'
+            {...register('Password', { required: 'Password is required' })}
+          />
+        </div>
+        {/* for alternative contact  */}
+        <div className='col form-group mt-4'>
+          <label htmlFor='confirmPassword' className='mb-2 fw-bold'>
+            Confirm Password : *
+          </label>
+          <input
+            type='text'
+            className='form-control'
+            name='confirmPassword'
+            {...register('confirmPassword', {
+              required: 'Confirm Password is required',
+            })}
+          />
+        </div>
+      </div>
+      <div className='row d-flex justify-content-center'>
+        <div className='col-8'>
+          <StepNavigation
+            step={step}
+            setStep={setStep}
+            error={errors.Name ? 'Name field is required' : false}
+          ></StepNavigation>
+        </div>
+      </div>
+    </form>
   );
 };
 
