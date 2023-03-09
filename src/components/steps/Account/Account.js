@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useFormDataContext } from '../../../hooks/useFormDataContext';
 import utils from '../../../utils/utils';
@@ -12,6 +12,8 @@ const Account = ({ step, setStep }) => {
 
   const {
     handleSubmit,
+    getValues,
+    watch,
     formState: { errors },
     register,
   } = useForm({
@@ -81,13 +83,27 @@ const Account = ({ step, setStep }) => {
             Password : *
           </label>
           <input
+            id='password'
             type='password'
             placeholder='Password'
             className='form-control shadow appearance-none border border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
             name='Password'
             autocomplete='off'
-            {...register('Password', { required: 'Password is required' })}
+            {...register('Password', {
+              required: 'Password is required',
+              minLength: 5,
+            })}
           />
+          {errors?.Password?.type === 'required' && (
+            <p className='text-semibold text-small text-red-600'>
+              This field is required
+            </p>
+          )}
+          {errors?.Password?.type === 'minLength' && (
+            <p className='text-semibold text-small text-red-600'>
+              password cannot less than 5 characters
+            </p>
+          )}
         </div>
         {/* for confirm password */}
         <div className='col form-group mt-4'>
@@ -103,18 +119,34 @@ const Account = ({ step, setStep }) => {
             className='form-control form-control shadow appearance-none border border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
             name='ConfirmPassword'
             {...register('ConfirmPassword', {
-              required: 'Confirm Password is required',
+              required: true,
             })}
           />
+          {watch('ConfirmPassword') !== watch('Password') &&
+          getValues('ConfirmPassword') ? (
+            <p className='text-semibold text-small text-red-600'>
+              Password did not match
+            </p>
+          ) : null}
         </div>
       </div>
-      <div>
-        <StepNavigation
-          step={step}
-          setStep={setStep}
-          error={errors.Name ? 'Name field is required' : false}
-        ></StepNavigation>
-      </div>
+      {watch('ConfirmPassword') !== watch('Password') ? (
+        <div className='pointer-events-none'>
+          <StepNavigation
+            step={step}
+            setStep={setStep}
+            error={errors.Name ? 'Name field is required' : false}
+          ></StepNavigation>
+        </div>
+      ) : (
+        <div>
+          <StepNavigation
+            step={step}
+            setStep={setStep}
+            error={errors.Name ? 'Name field is required' : false}
+          ></StepNavigation>
+        </div>
+      )}
     </form>
   );
 };

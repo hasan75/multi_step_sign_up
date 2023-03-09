@@ -9,9 +9,10 @@ const StepNavigation = ({ step, setStep, error }) => {
   const previousStepFrom = (step, setStep) => {
     if (step === 4) {
       localStorage.removeItem('formData');
-      localStorage.removeItem('step');
+      //localStorage.removeItem('step');
       setStep(1);
       saveStepToLocal(1);
+      window.location.reload(false);
     } else {
       setStep((currentStep) => currentStep - 1);
       saveStepToLocal((step = step - 1));
@@ -53,7 +54,7 @@ const StepNavigation = ({ step, setStep, error }) => {
             onClick={() => previousStepFrom(step, setStep)}
             className='block w-full bg-gray-100 hover:bg-gray-700 text-gray-700 font-semibold hover:text-white py-3 px-4  hover:border-transparent rounded'
           >
-            Previous
+            {step === 4 ? 'Another Sign Up' : 'Previous'}
           </button>
         )}
       </div>
