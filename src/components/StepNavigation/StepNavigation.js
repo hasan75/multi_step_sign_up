@@ -2,18 +2,16 @@ import React from 'react';
 import { useFormDataContext } from '../../hooks/useFormDataContext';
 import utils from '../../utils/utils';
 
-const StepNavigation = ({ step, setStep, error, response }) => {
-  const { res, setResFun } = useFormDataContext();
-  const { saveStepToLocal, saveResToLocal } = utils;
+const StepNavigation = ({ step, setStep, error }) => {
+  const { saveStepToLocal } = utils;
 
   //for back button functionality
   const previousStepFrom = (step, setStep) => {
-    console.log(step, 'on last page');
     if (step === 4) {
+      localStorage.removeItem('formData');
+      localStorage.removeItem('step');
       setStep(1);
       saveStepToLocal(1);
-      setResFun({});
-      localStorage.removeItem('res');
     } else {
       setStep((currentStep) => currentStep - 1);
       saveStepToLocal((step = step - 1));
@@ -24,7 +22,7 @@ const StepNavigation = ({ step, setStep, error, response }) => {
     <div className='mt-6'>
       {/* for showing the validation errors  */}
       {error ? (
-        <h5 className='flex align-center justify-center text-red-500 py-3'>
+        <h5 className='flex items-center justify-center text-red-500 py-3'>
           <span className='material-icons-sharp me-2'>error</span>{' '}
           <span>{error}</span>
         </h5>
@@ -35,10 +33,10 @@ const StepNavigation = ({ step, setStep, error, response }) => {
       {/* back and next navigator buttons  */}
 
       <div
-        className={`${response?.status === 'success' ? 'hidden' : ' '} ${
+        className={` ${
           step === 1
-            ? 'flex flex-col justify-center align-center'
-            : 'flex flex-col justify-center align-center'
+            ? 'flex flex-col justify-center items-center'
+            : 'flex flex-col justify-center items-center'
         }`}
       >
         {step < 4 && (

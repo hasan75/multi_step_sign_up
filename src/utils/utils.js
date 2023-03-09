@@ -49,7 +49,7 @@ utils.decrypt = (string) => {
   return decryptedMsg.toString(CryptoJS.enc.Utf8);
 };
 
-// local storage fuctions for get and set data
+// local storage functions for get and set data
 
 utils.saveDataToLocal = (formData) => {
   localStorage.setItem('formData', utils.encrypt(JSON.stringify(formData)));
@@ -57,10 +57,6 @@ utils.saveDataToLocal = (formData) => {
 
 utils.saveStepToLocal = (step) => {
   localStorage.setItem('step', utils.encrypt(JSON.stringify(step)));
-};
-
-utils.saveResToLocal = (res) => {
-  localStorage.setItem('res', utils.encrypt(JSON.stringify(res)));
 };
 
 export default utils;

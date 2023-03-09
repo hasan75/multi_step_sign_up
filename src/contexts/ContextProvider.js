@@ -14,15 +14,6 @@ const ContextProvider = ({ children }) => {
     }));
   };
 
-  //for the res and loading component
-  const [loading, setLoading] = useState(true);
-  const [res, setRes] = useState({});
-  // console.log(res, loading);
-
-  const setResFun = (data) => {
-    setRes(data);
-  };
-
   // first render for Date and Time Show
   const [firstRender, setFirstRender] = useState(true);
 
@@ -31,10 +22,7 @@ const ContextProvider = ({ children }) => {
       value={{
         formData,
         setFormValues,
-        setLoading,
-        setResFun,
-        loading,
-        res,
+
         step,
         setStep,
         firstRender,

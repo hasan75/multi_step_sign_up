@@ -5,15 +5,8 @@ import utils from '../../utils/utils';
 
 const SignUpForm = () => {
   // context api
-  const {
-    formData,
-    setFormValues,
-    step,
-    setStep,
-    res,
-    setResFun,
-    setFirstRender,
-  } = useFormDataContext();
+  const { formData, setFormValues, step, setStep, setFirstRender } =
+    useFormDataContext();
 
   // const [step, setStep] = useState(1);
 
@@ -33,9 +26,6 @@ const SignUpForm = () => {
 
   const currentFormContent = formContentStep(step, setStep);
 
-  console.log(step, 'SignUp');
-  // console.log(res);
-
   // from localStorage, save data
   useEffect(() => {
     if (localStorage.getItem('formData')) {
@@ -46,7 +36,7 @@ const SignUpForm = () => {
       );
 
       if (dataFromLocalStorage) {
-        // console.log(dataFromLocalStorage, 'decrypted');
+        console.log(dataFromLocalStorage, 'decrypted');
         setFormValues(dataFromLocalStorage);
       }
     }
@@ -57,15 +47,6 @@ const SignUpForm = () => {
 
       if (stepFromLocal) {
         setStep(stepFromLocal);
-      }
-    }
-
-    //save res to  local storage
-    if (localStorage.getItem('res')) {
-      const resFromLocal = JSON.parse(decrypt(localStorage.getItem('res')));
-
-      if (resFromLocal) {
-        setResFun(resFromLocal);
       }
     }
   }, []);

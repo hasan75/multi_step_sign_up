@@ -17,7 +17,10 @@ const Image = ({ step, setStep }) => {
     register,
   } = useForm({
     mode: 'all',
-    defaultValues: { Name: formData?.Name, Gender: formData?.Gender },
+    defaultValues: {
+      Photo_input: formData?.Photo_input,
+      Sign_input: formData?.Sign_input,
+    },
   });
 
   const onSubmit = (values) => {
@@ -38,27 +41,29 @@ const Image = ({ step, setStep }) => {
         <div className='col form-group my-3'>
           <label
             class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-            for='photo_input'
+            for='Photo_input'
           >
             Upload Your Photo:
           </label>
           <input
             class='block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 p-2'
-            id='photo_input'
+            id='Photo_input'
             type='file'
+            {...register('Photo_input', { required: 'Image is required' })}
           ></input>
         </div>
         <div className='col form-group mt-6 mb-4'>
           <label
             class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-            for='sign_input'
+            for='Sign_input'
           >
             Upload Signature Photo:
           </label>
           <input
             class='block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 p-2'
-            id='sign_input'
+            id='Sign_input'
             type='file'
+            {...register('Sign_input', { required: 'First Name is required' })}
           ></input>
         </div>
       </div>

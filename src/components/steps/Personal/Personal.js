@@ -17,7 +17,12 @@ const Personal = ({ step, setStep }) => {
     register,
   } = useForm({
     mode: 'all',
-    defaultValues: { Name: formData?.Name, Gender: formData?.Gender },
+    defaultValues: {
+      FirstName: formData?.FirstName,
+      LastName: formData?.LastName,
+      Contact: formData?.Contact,
+      AlternativeNum: formData?.AlternativeNum,
+    },
   });
 
   const onSubmit = (values) => {
@@ -87,7 +92,7 @@ const Personal = ({ step, setStep }) => {
         {/* for alternative contact  */}
         <div className='col form-group mt-4'>
           <label
-            htmlFor='alternativeNum'
+            htmlFor='AlternativeNum'
             className='block text-gray-700 text-sm font-bold mb-2'
           >
             Alternative Contact No : *
@@ -96,8 +101,8 @@ const Personal = ({ step, setStep }) => {
             type='text'
             placeholder='Alternative Contact No.'
             className='form-control form-control shadow appearance-none border border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
-            name='alternativeNum'
-            {...register('alternativeNum', {
+            name='AlternativeNum'
+            {...register('AlternativeNum', {
               required: 'Alternative Number is required',
             })}
           />

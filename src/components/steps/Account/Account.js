@@ -6,7 +6,7 @@ import StepNavigation from '../../StepNavigation/StepNavigation';
 
 const Account = ({ step, setStep }) => {
   const { formData, setFormValues } = useFormDataContext();
-  // console.log(formData);
+  console.log(formData);
 
   const { saveDataToLocal, saveStepToLocal } = utils;
 
@@ -16,7 +16,12 @@ const Account = ({ step, setStep }) => {
     register,
   } = useForm({
     mode: 'all',
-    defaultValues: { Name: formData?.Name, Gender: formData?.Gender },
+    defaultValues: {
+      Email: formData?.Email,
+      UserName: formData?.UserName,
+      Password: formData?.Password,
+      ConfirmPassword: formData?.ConfirmPassword,
+    },
   });
 
   const onSubmit = (values) => {
@@ -34,10 +39,10 @@ const Account = ({ step, setStep }) => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className='row d-flex justify-content-center mt-5'>
-        {/* for taking first name input  */}
+        {/* for taking email  */}
         <div className='col form-group'>
           <label
-            htmlFor='email'
+            htmlFor='Email'
             className='block text-gray-700 text-sm font-bold mb-2'
           >
             Email: *
@@ -46,11 +51,11 @@ const Account = ({ step, setStep }) => {
             type='email'
             placeholder='Email Id'
             className='form-control shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
-            name='email'
-            {...register('email', { required: 'email is required' })}
+            name='Email'
+            {...register('Email', { required: 'email is required' })}
           />
         </div>
-        {/* for last name input  */}
+        {/* for username  */}
         <div className='col form-group mt-4'>
           <label
             htmlFor='UserName'
@@ -63,10 +68,11 @@ const Account = ({ step, setStep }) => {
             className='form-control form-control shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
             placeholder='UserName'
             name='UserName'
+            autocomplete='off'
             {...register('UserName', { required: 'User Name is required' })}
           />
         </div>
-        {/* for contact  */}
+        {/* for password  */}
         <div className='col form-group mt-4'>
           <label
             htmlFor='Password'
@@ -79,36 +85,35 @@ const Account = ({ step, setStep }) => {
             placeholder='Password'
             className='form-control shadow appearance-none border border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
             name='Password'
+            autocomplete='off'
             {...register('Password', { required: 'Password is required' })}
           />
         </div>
-        {/* for alternative contact  */}
+        {/* for confirm password */}
         <div className='col form-group mt-4'>
           <label
-            htmlFor='confirmPassword'
+            htmlFor='ConfirmPassword'
             className='block text-gray-700 text-sm font-bold mb-2'
           >
             Confirm Password : *
           </label>
           <input
-            type='text'
+            type='password'
             placeholder='Confirm Password'
             className='form-control form-control shadow appearance-none border border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
-            name='confirmPassword'
-            {...register('confirmPassword', {
+            name='ConfirmPassword'
+            {...register('ConfirmPassword', {
               required: 'Confirm Password is required',
             })}
           />
         </div>
       </div>
-      <div className='row d-flex justify-content-center'>
-        <div className='col-8'>
-          <StepNavigation
-            step={step}
-            setStep={setStep}
-            error={errors.Name ? 'Name field is required' : false}
-          ></StepNavigation>
-        </div>
+      <div>
+        <StepNavigation
+          step={step}
+          setStep={setStep}
+          error={errors.Name ? 'Name field is required' : false}
+        ></StepNavigation>
       </div>
     </form>
   );

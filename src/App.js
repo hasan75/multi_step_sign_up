@@ -6,7 +6,7 @@ import StepInfo from './components/StepInfo/StepInfo';
 
 function App() {
   return (
-    <div className='App container mx-auto'>
+    <div className='App container mx-auto px-4 w-full lg:w-9/12'>
       <ContextProvider>
         <Header />
         <StepInfo />

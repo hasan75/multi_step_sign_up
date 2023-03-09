@@ -4,7 +4,7 @@ import { useFormDataContext } from '../../hooks/useFormDataContext';
 const StepInfo = () => {
   const { step } = useFormDataContext();
   return (
-    <div className='flex justify-between align-center text-xl font-semibold'>
+    <div className='flex justify-between items-center text-xl font-semibold pt-5'>
       <p>
         {step === 1
           ? 'Account Information'
