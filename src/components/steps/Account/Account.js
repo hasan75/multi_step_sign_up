@@ -44,7 +44,7 @@ const Account = ({ step, setStep }) => {
           </label>
           <input
             type='email'
-            placeholder='enter email'
+            placeholder='Email Id'
             className='form-control shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
             name='email'
             {...register('email', { required: 'email is required' })}
@@ -61,6 +61,7 @@ const Account = ({ step, setStep }) => {
           <input
             type='text'
             className='form-control form-control shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+            placeholder='UserName'
             name='UserName'
             {...register('UserName', { required: 'User Name is required' })}
           />
@@ -75,7 +76,7 @@ const Account = ({ step, setStep }) => {
           </label>
           <input
             type='password'
-            placeholder='enter password'
+            placeholder='Password'
             className='form-control shadow appearance-none border border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
             name='Password'
             {...register('Password', { required: 'Password is required' })}
@@ -91,6 +92,7 @@ const Account = ({ step, setStep }) => {
           </label>
           <input
             type='text'
+            placeholder='Confirm Password'
             className='form-control form-control shadow appearance-none border border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
             name='confirmPassword'
             {...register('confirmPassword', {

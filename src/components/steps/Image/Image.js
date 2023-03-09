@@ -34,10 +34,6 @@ const Image = ({ step, setStep }) => {
       className='d-flex flex-column justify-content-between w-100'
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className='flex justify-between align-center'>
-        <p>Image Upload:</p>
-        <p>Step {step} - 4</p>
-      </div>
       <div className='row'>
         <div className='col form-group my-3'>
           <label

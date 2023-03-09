@@ -46,6 +46,7 @@ const Personal = ({ step, setStep }) => {
           </label>
           <input
             type='text'
+            placeholder='First Name'
             className='form-control form-control shadow appearance-none border border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
             name='FirstName'
             {...register('FirstName', { required: 'First Name is required' })}
@@ -61,6 +62,7 @@ const Personal = ({ step, setStep }) => {
           </label>
           <input
             type='text'
+            placeholder='Last Name'
             className='form-control form-control shadow appearance-none border border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
             name='LastName'
             {...register('LastName', { required: 'Last Name is required' })}
@@ -75,6 +77,7 @@ const Personal = ({ step, setStep }) => {
             Contact No. : *
           </label>
           <input
+            placeholder='Contact No.'
             type='text'
             className='form-control form-control shadow appearance-none border border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
             name='Contact'
@@ -91,6 +94,7 @@ const Personal = ({ step, setStep }) => {
           </label>
           <input
             type='text'
+            placeholder='Alternative Contact No.'
             className='form-control form-control shadow appearance-none border border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline'
             name='alternativeNum'
             {...register('alternativeNum', {
